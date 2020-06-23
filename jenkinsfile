@@ -2,6 +2,10 @@ def pipelineName = env.JOB_BASE_NAME
 
 pipeline {
     agent any
+
+    parameters {
+        string(name: 'gittag', defaultValue: '1.0.0', description: 'enter branch tag to build')
+    }
     
     stages {
         stage ("first stage print botool information") {
@@ -9,6 +13,7 @@ pipeline {
                 echo "Welcome to jenkins delerative pipline by batool checking out git"
                 sh "pwd"
                 echo "$pipelineName"
+                echo "${params.gittag}"
 
             }
 
