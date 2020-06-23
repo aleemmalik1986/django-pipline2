@@ -13,8 +13,12 @@ pipeline {
         }
 
         stage ("print second stage") {
-
+            steps{
                 echo "i am in second stage"
+
+            }
+
+                
         }
 
 
