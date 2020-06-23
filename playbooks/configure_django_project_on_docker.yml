@@ -1,0 +1,31 @@
+---
+- hosts: docker
+  become: yes
+  tasks:
+  - name: current directory
+    shell: pwd
+    register: pwd
+
+  - name: Ansible check directory.
+    stat:
+     path: /tmp/django-pipeline2
+    register: my_folder
+  
+  - name: create directory
+    file:
+      path: /tmp/django-pipeline2
+      state: directory
+      mode: 0755
+      group: jenkins
+      owner: jenkins
+    when: my_folder.stat.exists == false
+
+  - name: unflating django source zipfile
+    unarchive:
+            src: /tmp/artifact.zip
+            dest: /tmp/django-pipeline2
+
+  - name: build docker image
+    command: docker build -t django-pipeline2-image .
+    args:
+      chdir: /tmp/django-pipeline2
