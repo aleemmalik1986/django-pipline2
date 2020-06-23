@@ -1,5 +1,5 @@
 ---
-- hosts: ansible
+- hosts: ansible, docker
   become: true
 
   tasks:
@@ -8,5 +8,8 @@
     register: pwd
 
   - name: copying artifact file to docker host
-    shell: scp -i /var/lib/jenkins/Easy-Audit-Keypair.pem artifact.zip jenkins@docker:/tmp/artifact.zip
+    copy:
+      src: artifact.zip
+      dest: /tmp/artifact.zip
+    delegate_to: ansible
     
