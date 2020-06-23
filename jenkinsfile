@@ -41,8 +41,8 @@ pipeline {
             steps{
                 echo "i am in copying atrifacts to docker"
                 sh "whoami"
-                sh "scp -i /var/lib/jenkins/Easy-Audit-Keypair.pem artifact.zip jenkins@10.0.0.8:/tmp/artifact.zip"
-                
+                sh "scp -i /var/lib/jenkins/Easy-Audit-Keypair.pem artifact.zip jenkins@10.0.0.186:/tmp/artifact.zip"
+
             }
 
         }
