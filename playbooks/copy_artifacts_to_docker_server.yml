@@ -7,12 +7,9 @@
     shell: pwd
     register: pwd
 
- - hosts: docker
-   become: true
-   
-   tasks:   
   - name: copying artifact file to docker host
     copy:
       src=artifact.zip
       dest=/tmp/artifact.zip
+      delegate_to: docker
     
