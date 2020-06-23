@@ -40,6 +40,7 @@ pipeline {
         stage ("Copy artifacts.zip to docker"){
             steps{
                 echo "i am in copying atrifacts to docker"
+                sh "whoami"
                 sh "ansible-playbook playbooks/copy_artifacts_to_docker_server.yml"
             }
 
