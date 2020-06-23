@@ -37,12 +37,12 @@ pipeline {
                 
         }
 
-        stage ("Copy artifacts.zip to docker"){
+        stage ("Copy artifacts.zip to docker and build/run docker container"){
             steps{
                 echo "i am in copying atrifacts to docker"
                 sh "whoami"
                 sh "scp -i /var/lib/jenkins/Easy-Audit-Keypair.pem artifact.zip jenkins@10.0.0.186:/tmp/artifact.zip"
-
+                sh "ansible-playbook playbooks/configure_django_project_on_docker.yml"
             }
 
         }
