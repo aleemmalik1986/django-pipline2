@@ -1,3 +1,5 @@
+def pipelineName = env.JOB_BASE_NAME
+
 pipeline {
     agent any
     
@@ -6,6 +8,7 @@ pipeline {
             steps {
                 echo "Welcome to jenkins delerative pipline by batool checking out git"
                 sh "pwd"
+                echo "$pipelineName"
 
             }
 
