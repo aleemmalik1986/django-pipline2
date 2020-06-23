@@ -2,7 +2,7 @@ pipeline {
     agent any
     
     stages {
-        stage ("print botool information") {
+        stage ("first stage print botool information") {
             steps {
                 echo "Welcome to jenkins delerative pipline by batool checking out git"
                 sh "pwd"
@@ -10,6 +10,11 @@ pipeline {
             }
 
 
+        }
+
+        stage ("print second stage") {
+
+                echo "i am in second stage"
         }
 
 
