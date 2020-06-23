@@ -8,7 +8,7 @@ pipeline {
     }
     
     stages {
-        stage ("first stage print botool information") {
+        stage ("first stage git checkout") {
             steps {
                 echo "Welcome to jenkins delerative pipline by batool checking out git"
                 sh "pwd"
@@ -26,9 +26,11 @@ pipeline {
 
         }
 
-        stage ("print second stage") {
+        stage ("second stage build artifacts zip file for docker") {
             steps{
                 echo "i am in second stage"
+                sh "pwd"
+                sh "zip -r artifact.zip ."
 
             }
 
