@@ -14,6 +14,12 @@ pipeline {
                 sh "pwd"
                 echo "$pipelineName"
                 echo "${params.gittag}"
+                checkout ([
+                $class: 'GitSCM',
+                    branches: [[name: "refs/tags/${params.gittag}"]],
+                    extensions: [[$class: 'CloneOption', shallow: false, depth: 0, reference: '']],
+                    userRemoteConfigs: scm.userRemoteConfigs,
+                ])
 
             }
 
