@@ -1,0 +1,8 @@
+---
+- hosts: ansible
+  become: true
+
+  tasks:
+  - name: current directory
+    shell: pwd
+    register: pwd
