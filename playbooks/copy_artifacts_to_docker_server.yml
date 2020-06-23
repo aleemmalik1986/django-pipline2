@@ -8,8 +8,5 @@
     register: pwd
 
   - name: copying artifact file to docker host
-    copy:
-      src=artifact.zip
-      dest=/tmp/artifact.zip
-      delegate_to: docker
+    shell: scp -i /var/lib/jenkins/Easy-Audit-Keypair.pem artifact.zip jenkins@docker:/tmp/artifact.zip
     
