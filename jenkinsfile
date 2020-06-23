@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage ("print botool information") {
+            steps {
+                echo "Welcome to jenkins delerative pipline by batool checking out git"
+                sh "pwd"
+
+            }
+
+
+        }
+
+
+    }
+
+
+
+
+}
