@@ -1,13 +1,18 @@
 ---
-- hosts: ansible,docker
+- hosts: ansible
   become: true
 
   tasks:
   - name: current directory
     shell: pwd
     register: pwd
+
+ - hosts: docker
+   become: true
+   
+   tasks:   
   - name: copying artifact file to docker host
     copy:
       src=artifact.zip
       dest=/tmp/artifact.zip
-    delegate_to: docker
+    
