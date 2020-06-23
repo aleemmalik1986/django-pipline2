@@ -1,5 +1,5 @@
 ---
-- hosts: ansible
+- hosts: ansible,docker
   become: true
 
   tasks:
