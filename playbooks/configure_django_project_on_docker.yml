@@ -20,9 +20,10 @@
       owner: jenkins
     when: my_folder.stat.exists == false
 
+
   - name: remove contents in dir if any
     command: rm -rf /tmp/django-pipeline2/*
-    
+
   - name: unflating django source zipfile
     unarchive:
             src: /tmp/artifact.zip

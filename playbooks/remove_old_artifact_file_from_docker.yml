@@ -1,0 +1,8 @@
+---
+- hosts: docker
+  become: yes
+  tasks:
+  - name: current directory
+    command: rm -rf /tmp/artifact*
+    ignore_errors: yes
+    
