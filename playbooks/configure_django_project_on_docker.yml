@@ -25,6 +25,7 @@
     file:
       state: absent
       path: /tmp/django-pipeline2/
+    ignore_errors: yes
 
   - name: unflating django source zipfile
     unarchive:
