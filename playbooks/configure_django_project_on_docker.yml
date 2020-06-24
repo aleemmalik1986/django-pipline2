@@ -22,7 +22,9 @@
 
 
   - name: remove contents in dir if any
-    command: rm -rf /tmp/django-pipeline2/*
+    file:
+    state: absent
+    path: /tmp/django-pipeline2/
 
   - name: unflating django source zipfile
     unarchive:
