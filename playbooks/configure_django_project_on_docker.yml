@@ -30,7 +30,7 @@
   - name: unflating django source zipfile
     unarchive:
       src: /tmp/artifact.zip
-      dest: /tmp/django-pipeline2/
+      dest: /tmp/django-pipeline2
 
   - name: build docker image
     command: sudo docker build -t django-pipeline2-image .
