@@ -31,7 +31,7 @@ pipeline {
                 echo "i am in second stage"
                 sh "pwd"
                 sh "rm -rf artifact*"
-                sh "zip -r artifact.zip ."
+                sh "zip -r artifact.zip . -x ./.*"
 
             }
 
