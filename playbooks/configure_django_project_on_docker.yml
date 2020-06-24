@@ -33,7 +33,6 @@
       dest: /tmp/
       creates: /tmp/django-pipeline2
       copy: no
-      remote_src: no
 
   - name: build docker image
     command: sudo docker build -t django-pipeline2-image .
