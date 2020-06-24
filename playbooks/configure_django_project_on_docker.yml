@@ -1,6 +1,6 @@
 ---
 - hosts: docker
-  become: yes
+  become: no
   tasks:
   - name: current directory
     shell: pwd
@@ -29,6 +29,6 @@
     ignore_errors: yes
 
   - name: build docker image
-    command: docker build -t django-pipeline2-image .
+    command: sudo docker build -t django-pipeline2-image .
     args:
       chdir: /tmp/django-pipeline2
