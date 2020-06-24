@@ -33,6 +33,10 @@
       copy: no
   
   - name: remove previous docker image
+    command: sudo docker container rm django-pipline2-container
+    ignore_errors: yes
+
+  - name: remove previous docker image
     command: sudo docker image rmi django-pipeline2-image
     ignore_errors: yes
 
@@ -40,3 +44,6 @@
     command: sudo docker build -t django-pipeline2-image .
     args:
       chdir: /tmp/django-pipeline2
+
+  - name: run django docker image
+    command: sudo docker run -itd --name django-pipline2-container -p 80:8004 django-pipeline2-image
