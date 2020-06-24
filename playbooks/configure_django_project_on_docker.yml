@@ -23,8 +23,8 @@
 
   - name: remove contents in dir if any
     file:
-    state: absent
-    path: /tmp/django-pipeline2/
+      state: absent
+      path: /tmp/django-pipeline2/
 
   - name: unflating django source zipfile
     unarchive:
