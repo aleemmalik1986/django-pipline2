@@ -25,8 +25,9 @@
     command: rm -rf /tmp/django-pipeline2/*
 
   - name: unflating django source zipfile
-    shell: unzip /tmp/artifact.zip -d /tmp/django-pipeline2
-    ignore_errors: yes
+    unarchive:
+      src: /tmp/artifact.zip
+      dest: /tmp/django-pipeline2/
 
   - name: build docker image
     command: sudo docker build -t django-pipeline2-image .
