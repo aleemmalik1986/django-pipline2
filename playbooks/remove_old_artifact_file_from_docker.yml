@@ -3,6 +3,8 @@
   become: yes
   tasks:
   - name: current directory
-    command: rm -rf /tmp/artifact*
+    file:
+      state: absent
+      path: /tmp/artifact*
     ignore_errors: yes
     
