@@ -31,6 +31,10 @@
       src: /tmp/artifact.zip
       dest: /tmp/django-pipeline2
       copy: no
+  - name: Setup django allowed hosts
+    command: echo ALLOWED_HOSTS = [\'54.146.24.184\'] >> /tmp/django-pipeline2/src/django_pipline2/settings.py
+    ignore_errors: yes
+
   - name: stop docker container
     command: sudo docker stop  django-pipline2-container
     ignore_errors: yes
