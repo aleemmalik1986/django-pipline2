@@ -31,6 +31,7 @@ pipeline {
                 echo "i am in second stage"
                 sh "pwd"
                 sh "rm -rf artifact*"
+                sh "echo ALLOWED_HOSTS = [\'54.146.24.184\'] >> src/django_pipline2/settings.py"
                 sh "zip -r artifact.zip . -x ./.*"
 
             }
