@@ -67,7 +67,7 @@
     args:
       chdir: /tmp/django-pipeline2
   
-  - name: Wait for port 8004 to become open on the host, don't start checking for 30 seconds
+  - name: Wait for port 80 to become open on the host, don't start checking for 30 seconds v1
     wait_for:
       host: 54.146.24.184
       port: 80
