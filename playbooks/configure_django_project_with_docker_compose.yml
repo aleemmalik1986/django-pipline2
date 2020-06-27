@@ -1,0 +1,68 @@
+---
+- hosts: docker
+  become: no
+  tasks:
+  - name: current directory
+    shell: pwd
+    register: pwd
+
+  - name: remove contents in dir if any
+    file:
+      state: absent
+      path: /tmp/django-pipeline2/
+    ignore_errors: yes
+
+  - name: Ansible check directory.
+    stat:
+     path: /tmp/django-pipeline2
+    register: my_folder
+  
+  - name: create directory
+    file:
+      path: /tmp/django-pipeline2
+      state: directory
+      mode: 0755
+      group: jenkins
+      owner: jenkins
+    when: my_folder.stat.exists == false
+
+  - name: unflating django source zipfile
+    unarchive:
+      src: /tmp/artifact.zip
+      dest: /tmp/django-pipeline2
+      copy: no
+
+  # - name: stop docker container
+  #   command: sudo docker stop  django-pipline2-container
+  #   ignore_errors: yes
+  
+  # - name: remove previous docker image
+  #   command: sudo docker container rm django-pipline2-container
+  #   ignore_errors: yes
+
+  # - name: remove previous docker image
+  #   command: sudo docker image rmi django-pipeline2-image
+  #   ignore_errors: yes
+
+  # - name: build docker image
+  #   command: sudo docker build -t django-pipeline2-image .
+  #   args:
+  #     chdir: /tmp/django-pipeline2
+
+  # - name: run django docker image
+  #   command: sudo docker run -itd --name django-pipline2-container -p 80:8004 django-pipeline2-image
+
+  - name: Stop Existing docker-compose environment
+    command: sudo docker-compose down --rmi all
+    args:
+      chdir: /tmp/django-pipeline2
+  
+  - name: Starting DB for django with docker-compose
+    command:  sudo docker-compose up -d db
+    args:
+      chdir: /tmp/django-pipeline2
+  
+  - name: start django server with docker-compose
+    command: sudo docker-compose up -d db
+    args:
+      chdir: /tmp/django-pipeline2

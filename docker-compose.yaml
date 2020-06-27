@@ -1,0 +1,23 @@
+--- 
+services: 
+  db: 
+    environment: 
+      MYSQL_DATABASE: django_db
+      MYSQL_PASSWORD: django_dbpass
+      MYSQL_ROOT_PASSWORD: redhat
+      MYSQL_USER: django_db_user
+    image: mariadb
+  web:
+    build: ./
+    command: bash -c "python3 src/manage.py makemigrations && python3 src/manage.py migrate && python3 src/manage.py runserver 0.0.0.0:8004"
+    volumes:
+      - ./:/code
+    ports:
+      - "80:8004"
+    env_file:
+      - ./envfile.env
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - db
+version: "3"
