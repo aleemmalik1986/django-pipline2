@@ -62,7 +62,7 @@
     args:
       chdir: /tmp/django-pipeline2
   
-  - name: start django server with docker-compose
-    command: sudo docker-compose up -d db
+  - name: start WEB django server with docker-compose
+    command: sudo docker-compose up -d web
     args:
       chdir: /tmp/django-pipeline2
