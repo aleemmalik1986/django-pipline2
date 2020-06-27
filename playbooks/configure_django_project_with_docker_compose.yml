@@ -67,11 +67,14 @@
     args:
       chdir: /tmp/django-pipeline2
   
-  - name: Wait for port 80 to become open on the host, don't start checking for 30 seconds v1
+  # - name: Wait for port 80 to become open on the host, don't start checking for 30 seconds v1
+  #   wait_for:
+  #     host: 54.146.24.184
+  #     port: 80
+  #     delay: 30
+  - name: sleep for 30 seconds and continue with play
     wait_for:
-      host: 54.146.24.184
-      port: 80
-      delay: 30
+      timeout: 30
 
   - name: Check that a page returns a status 200 and fail if the word AWESOME 1.0.8 is not in the page contents
     uri:
