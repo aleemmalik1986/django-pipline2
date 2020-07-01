@@ -1,0 +1,5 @@
+mysql -u root  -predhat -e "show databases;"
+#mysql -u root  -predhat -e "CREATE DATABASE test_django_db;"
+mysql -u root  -predhat -e "GRANT ALL PRIVILEGES ON *.* TO 'django_db_user'@'%';"
+mysql -u root  -predhat -e "flush privileges;"
+mysql -u root  -predhat -e "SHOW GRANTS FOR 'django_db_user'@'%';"

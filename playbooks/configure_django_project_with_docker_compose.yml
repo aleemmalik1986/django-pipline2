@@ -57,6 +57,12 @@
     args:
       chdir: /tmp/django-pipeline2
   
+  - name: cleanup docker overlay and images etc
+    command: sudo docker system prune -a -f
+    args:
+      chdir: /tmp/django-pipeline2
+
+  
   - name: Starting DB for django with docker-compose
     command:  sudo docker-compose up -d db
     args:
@@ -66,6 +72,12 @@
     command: sudo docker-compose up -d web
     args:
       chdir: /tmp/django-pipeline2
+  
+  - name:  now doing unit testing
+    command: sudo docker exec -it django-pipeline2_web_1 python src/manage.py test
+    args:
+      chdir: /tmp/django-pipeline2
+
 
 
   # For testing if ram is bigger 

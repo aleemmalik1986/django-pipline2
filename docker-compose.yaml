@@ -6,7 +6,10 @@ services:
       MYSQL_PASSWORD: django_dbpass
       MYSQL_ROOT_PASSWORD: redhat
       MYSQL_USER: django_db_user
+    volumes:
+      - ./custom_scripts/:/docker-entrypoint-initdb.d/
     image: mariadb
+
   web:
     build: ./
     command: bash -c "python3 src/manage.py makemigrations && python3 src/manage.py migrate && python3 src/manage.py runserver 0.0.0.0:8004"

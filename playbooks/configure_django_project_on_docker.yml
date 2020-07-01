@@ -49,5 +49,6 @@
     args:
       chdir: /tmp/django-pipeline2
 
-  - name: run django docker image
+  - name: run django docker container with image
     command: sudo docker run -itd --name django-pipline2-container -p 80:8004 django-pipeline2-image
+
